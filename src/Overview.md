@@ -1,8 +1,8 @@
 # Assembly Info
-Assembly Info is an extension for Team Foundation Server / Team Services that sets assembly information from a build.
+Assembly Info is an extension for Team Services that sets assembly information from a build.
 
 ## Details
-The extension will recursively search the specified **Source Folder** for all files listed in the **Source Files** field and set the manifest data. This will result in assembly files containing common company or product information.
+The extension will recursively search the specified **Source Folder** for all files listed in the **Source Files** field and set the assembly data. This will result in assembly files containing common company or product information.
 
 Values for the following attributes can be set from the extension:  
 
@@ -24,7 +24,7 @@ Values for the following attributes can be set from the extension:
 - If no value is specified for a field that field will be ignored and the default value in the *AssemblyInfo.\** source file will be used.
 - The task will recursively search the **Source Folder** for all files listed in the **Source Files** field.
 - The task will only update files listed in the **Source Files** field.
-- The task can update project *AssemblyInfo* files, *GlobalAssemblyInfo* files and .Net Core project files *.csproj*.
+- The task can update project *AssemblyInfo* files and .Net Core project files *.csproj*.
 
 > For more information regarding assembly attributes please see the following [Microsoft Doc](https://docs.microsoft.com/en-us/dotnet/framework/app-domains/set-assembly-attributes)
 
@@ -39,7 +39,7 @@ Values for the following attributes can be set from the extension:
 4. Configure the task by providing values for the attributes mentioned in the above table.  
 > Ensure you specify the file names you wish to populate within the **Source Files** field: -  
 > For .Net Framework specify files such as: *AssemblyInfo.cs, AssemblyInfo.vb, GlobalInfo.cs*  
-> For .Net Core specify the project filename: *NetCore.csproj*  
+> For .Net Core specify the project filename: *NetCoreLib.csproj*  
 
   ![Assembly Info task parameters](images/Task_Parameters.png)
 
@@ -47,49 +47,12 @@ Values for the following attributes can be set from the extension:
 
   ![Assembly Info Set](images/Assembly_Manifest_Data.png)
 
-### Version Number
-A version number must be a numeric value in the format `digit.digit[.digit[.digit]]`.  
-Digits inside square brackets are optional.  
-```
-1.0[.0.0]
-2016.12[.31.1]
-```
-To achieve the best result edit a build definition then select the **General** tab and set the **Build number format** to:
-```
-$(Build.DefinitionName)_$(date:yyyy).$(date:MM).$(date:dd)$(rev:.r)
-```
-For SemVer support use:
-```
-1.0.$(Rev:r)
-```
-Now click the **Tasks** tab, select the Assembly Info task and set the **Version Number** to:
-```
-$(Build.BuildNumber)
-```
-This approach ensures:
-- The version number is in the correct format.
-- The version number is determined by the build and not the task.
-- Enables us to associate assemblies to a specific build.
-
-### Copyright
-The copyright field supports date and time formats. You can set the date and time in the copyright field by using one of the following examples:
-```
-Copyright © $(date:yyyy)  
-Copyright © $(date:dd MM yyyy)  
-Copyright © $(date:M.d.yyyy)  
-Copyright © $(date:dd MMMM yyyy HH:mm tt)
-```
-> For additional date & time formats please see the following [Microsoft Doc](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings).
+### Help and Support
+Please visit our [wiki](https://github.com/BMuuN/vsts-assemblyinfo-task/wiki) for articles describing how to configure the task parameters, including the various version formats supported by the extension.
 
 ## Contributions
 We welcome all contributions whether it's logging bugs, creating suggestions or submitting pull requests.  
 If you wish to contributions to this project head on over to our [GitHub](https://github.com/BMuuN/vsts-assemblyinfo-task) page.
-
-### Community
-We thank the following contributors for their time and effort with this project: 
-- [roryza](https://github.com/roryza)
-- [richardctrimble](https://github.com/richardctrimble)
-- [SimsonicLtd](https://github.com/SimsonicLtd)
 
 ### Release Notes
 See the [release notes](https://github.com/BMuuN/vsts-assemblyinfo-task/blob/master/ReleaseNotes.md) for all changes included in each release.

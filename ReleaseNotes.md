@@ -1,4 +1,14 @@
 # Release Notes
+> **v1.1.36**
+> - Added wilcard version number support
+> Thanks to [andyste1](https://github.com/andyste1)
+> - Added flag to insert missing attributes.
+> Thanks to [pbelousov](https://github.com/pbelousov)
+
+> **v1.0.30**
+> - Added support for spacing.  
+>  Thanks to [enigmament](https://github.com/enigmament).
+
 > **v1.0.29**
 > - Added support for SemVer versioning.  
 >  Thanks to [SimsonicLtd](https://github.com/SimsonicLtd).
